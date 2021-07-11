@@ -27,6 +27,7 @@ function setup() {
   bow.addImage(bowImage); 
   bow.scale = 1;
   score=0 
+  
 }
 
 function draw() {
@@ -34,6 +35,9 @@ function draw() {
   // moving ground
     scene.velocityX = -3 
 
+   if(World.frameCount%100===0){
+    score+=1
+}
     if (scene.x < 0){
       scene.x = scene.width/2;
     }
@@ -49,7 +53,7 @@ function draw() {
   
   //creating continous balloons
   var select_balloon = Math.round(random(1,4));
-  console.log(select_balloon)
+  
   
   if (World.frameCount % 100 == 0) {
     if (select_balloon == 1) {
@@ -66,7 +70,10 @@ function draw() {
   }
   }
  
-  
+  text ("Score"+score,270,30)
+  textSize= 20
+  scene.depth=score.depth
+  score.depth=score.depth+1 
   drawSprites();
 }
 
